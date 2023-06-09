@@ -78,6 +78,36 @@ if [[ ! -w "/config" ]]; then
     exit 1
 fi
 
+if [[ "$MODS_ENABLED" == "true" ]]; then
+    printf "Mods enabled, installing ficsit-cli...\\n"
+    if [ "$FICSIT_CLI_VER" == "latest" ]; then
+        printf "Resolving latest ficsit-cli version...\\n"
+        release=$(curl -s https://api.github.com/repos/satisfactorymodding/ficsit-cli/releases/latest)
+    else
+        printf "Resolving ficsit-cli version: ${FICSIT_CLI_VER}...\\n"
+        release=$(curl -s https://api.github.com/repos/satisfactorymodding/ficsit-cli/releases/tags/${FICSIT_CLI_VER})
+    fi
+    FICSIT_CLI_VER=$(echo "$release" | grep -oP '(?<="tag_name": ")[^"]+')
+    FICSIT_CLI_URLS=$(echo "$release" | grep -oP '(?<="browser_download_url": ")[^"]+')
+    deb_url=$(echo "${FICSIT_CLI_URLS}" | grep "ficsit_linux_amd64.deb")
+    sum_url=$(echo "${FICSIT_CLI_URLS}" | grep "checksums.txt")
+    printf "Installing ficsit-cli version: ${FICSIT_CLI_VER}\\n"
+    curl -sSL -o /tmp/ficsit.deb "$deb_url"
+    expected_sum=$(curl -sSL "$sum_url" | grep "ficsit_linux_amd64.deb" | awk '{print $1}')
+    actual_sum=$(sha256sum /tmp/ficsit.deb | awk '{print $1}')
+    if [ "$expected_sum" != "$actual_sum" ]; then
+        printf "ficsit-cli checksum mismatch\\n"
+        printf "Expected: %s\\n" "$expected_sum"
+        printf "Actual: %s\\n" "$actual_sum"
+        exit 1
+    fi
+    
+    printf "Installing ficsit-cli...\\n"
+    dpkg -i /tmp/ficsit.deb
+    rm -f /tmp/ficsit.deb
+    printf "ficst-cli updated\\n"
+fi
+
 mkdir -p \
     /config/backups \
     /config/gamefiles \
