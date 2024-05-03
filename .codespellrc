@@ -1,0 +1,6 @@
+[codespell]
+skip = *.log
+ignore-words-list = sav
+builtin = clear,informal,code,en-GB_to_en-US
+write-changes =
+count =

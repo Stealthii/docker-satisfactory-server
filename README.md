@@ -49,7 +49,7 @@ wolveix/satisfactory-server:latest
 
 * `--detach` -> Starts the container detached from your terminal<br>
 If you want to see the logs replace it with `--sig-proxy=false`
-* `--name` -> Gives the container a unqiue name
+* `--name` -> Gives the container a unique name
 * `--hostname` -> Changes the hostname of the container
 * `--restart unless-stopped` -> Automatically restarts the container unless the container was manually stopped
 * `--volume` -> Binds the Satisfactory config folder to the folder you specified

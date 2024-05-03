@@ -34,7 +34,7 @@ fi
 
 printf "Checking available memory...%sGB detected\\n" "$RAMAVAILABLE"
 if [[ "$RAMAVAILABLE" -lt 12 ]]; then
-    printf "${MSGWARNING} You have less than the required 12GB minmum (%sGB detected) of available RAM to run the game server.\\nIt is likely that the server will fail to load properly.\\n" "$RAMAVAILABLE"
+    printf "${MSGWARNING} You have less than the required 12GB minimum (%sGB detected) of available RAM to run the game server.\\nIt is likely that the server will fail to load properly.\\n" "$RAMAVAILABLE"
 fi
 
 # check if the user and group IDs have been set

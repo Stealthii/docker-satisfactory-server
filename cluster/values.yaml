@@ -15,5 +15,5 @@ persistence:
     enabled: true
 
   server-cache: # Game files stored here
-    # This is seperated to allow for backing up only game/config data
+    # This is separated to allow for backing up only game/config data
     enabled: true
