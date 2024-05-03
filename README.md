@@ -44,10 +44,10 @@ docker run \
 wolveix/satisfactory-server:latest
 ```
 
-<details> 
+<details>
 <summary>Explanation of the command</summary>
 
-* `--detach` -> Starts the container detached from your terminal<br> 
+* `--detach` -> Starts the container detached from your terminal<br>
 If you want to see the logs replace it with `--sig-proxy=false`
 * `--name` -> Gives the container a unqiue name
 * `--hostname` -> Changes the hostname of the container
@@ -57,7 +57,7 @@ Allows you to easily access your savegames
 * For the environment (`--env`) variables please see [here](https://github.com/wolveix/satisfactory-server#environment-variables)
 * `--memory-reservation=4G` -> Reserves 4GB RAM from the host for the container's use
 * `--memory 6G` -> Restricts the container to 6GB RAM
-* `--publish` -> Specifies the ports that the container exposes<br> 
+* `--publish` -> Specifies the ports that the container exposes<br>
 </details>
 
 ### Docker Compose
@@ -96,8 +96,8 @@ services:
 
 If you are running a [Kubernetes](https://kubernetes.io) cluster, we do have a [service.yaml](https://github.com/wolveix/satisfactory-server/tree/main/cluster/service.yaml) and [statefulset.yaml](https://github.com/wolveix/satisfactory-server/tree/main/cluster/statefulset.yaml) available under the [cluster](https://github.com/wolveix/satisfactory-server/tree/main/cluster) directory of this repo, along with an example [values.yaml](https://github.com/wolveix/satisfactory-server/tree/main/cluster/values.yaml) file.
 
-If you are using [Helm](https://helm.sh), you can find charts for this repo on 
-[ArtifactHUB](https://artifacthub.io/packages/search?ts_query_web=satisfactory&sort=relevance&page=1). The 
+If you are using [Helm](https://helm.sh), you can find charts for this repo on
+[ArtifactHUB](https://artifacthub.io/packages/search?ts_query_web=satisfactory&sort=relevance&page=1). The
 [k8s-at-home](https://github.com/k8s-at-home/charts) helm chart for Satisfactory can be installed with the below (please see `cluster/values.yaml` for more information).
 
 ```bash
